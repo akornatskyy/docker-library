@@ -20,7 +20,7 @@ docker run -it --rm akorn/lua:5.1-alpine
 
 ```
 docker images --format "{{.Repository}}:{{.Tag}}" | grep akorn \
-    | xargs -L 1 docker push
+    | xargs -I {} docker push {}
 ```
 
 # Links
