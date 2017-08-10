@@ -16,7 +16,7 @@ RUN set -ex \
         gcc \
         libc-dev \
     \
-    && wget -c https://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz \
+    && wget -c https://github.com/luarocks/luarocks/archive/v${LUAROCKS_VERSION}.tar.gz \
         -O - | tar -xzf - \
     \
     && cd luarocks-${LUAROCKS_VERSION} \
