@@ -19,7 +19,7 @@ docker run -it --rm akorn/lua:5.1-alpine
 # Setup
 
 ```
-docker images --format "{{.Repository}}:{{.Tag}}" | grep akorn \
+docker images --format "{{.Repository}}:{{.Tag}}" | awk '/akorn/ && !/none/' \
     | xargs -I {} docker push {}
 ```
 
