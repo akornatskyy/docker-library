@@ -10,6 +10,7 @@ RUN set -ex \
         ca-certificates \
         openssl \
         curl \
+        unzip \
     \
     && apk add --no-cache --virtual .build-deps \
         make \
