@@ -1,7 +1,5 @@
 language: bash
 
-sudo: false
-
 services:
   - docker
 
