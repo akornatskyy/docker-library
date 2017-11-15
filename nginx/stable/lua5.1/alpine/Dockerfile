@@ -2,7 +2,7 @@ FROM akorn/luarocks:lua5.1-alpine
 
 MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
 
-ENV NGINX_VERSION=1.12.2
+ENV NGINX_VERSION=1.13.7
 ENV NGINX_LUA_MODULE_VERSION=0.10.11
 
 RUN set -ex \
