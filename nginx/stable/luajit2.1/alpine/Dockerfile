@@ -2,8 +2,8 @@ FROM akorn/luarocks:luajit2.1-alpine
 
 MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
 
-ENV NGINX_VERSION=1.13.10
-ENV NGINX_LUA_MODULE_VERSION=0.10.11
+ENV NGINX_VERSION=1.14.0
+ENV NGINX_LUA_MODULE_VERSION=0.10.12
 
 RUN set -ex \
     \
