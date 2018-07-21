@@ -1,6 +1,6 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
 ENV LUA_VERSION=5.2.4
 

@@ -1,8 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUA_VERSION=5.3.4
+ENV LUA_VERSION=5.3.5
 
 RUN set -ex \
     \

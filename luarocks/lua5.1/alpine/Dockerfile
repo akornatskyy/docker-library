@@ -1,8 +1,8 @@
 FROM akorn/lua:5.1-alpine
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUAROCKS_VERSION=2.4.4
+ENV LUAROCKS_VERSION=3.0.0
 
 RUN set -ex \
     \

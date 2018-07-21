@@ -1,8 +1,8 @@
 FROM akorn/luarocks:luajit2.0-alpine
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV NGINX_VERSION=1.14.0
+ENV NGINX_VERSION=1.15.1
 ENV NGINX_LUA_MODULE_VERSION=0.10.13
 
 RUN set -ex \
