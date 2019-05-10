@@ -2,7 +2,7 @@ FROM akorn/luajit:2.0-alpine
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUAROCKS_VERSION=3.0.4
+ENV LUAROCKS_VERSION=3.1.2
 
 RUN set -ex \
     \
@@ -16,7 +16,7 @@ RUN set -ex \
         gcc \
         libc-dev \
     \
-    && wget -c https://github.com/luarocks/luarocks/archive/v${LUAROCKS_VERSION}.tar.gz \
+    && wget https://luarocks.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz \
         -O - | tar -xzf - \
     \
     && cd luarocks-${LUAROCKS_VERSION} \
