@@ -2,7 +2,7 @@ FROM akorn/lua:5.2-alpine
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUAROCKS_VERSION=3.1.2
+ENV LUAROCKS_VERSION=3.1.3
 
 RUN set -ex \
     \
