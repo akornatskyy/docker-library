@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.11.0
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
