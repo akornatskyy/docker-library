@@ -2,7 +2,7 @@ FROM akorn/luajit:2.1-openresty-alpine
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUAROCKS_VERSION=3.3.1
+ENV LUAROCKS_VERSION=3.4.0
 
 RUN set -ex \
     \
