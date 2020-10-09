@@ -2,7 +2,7 @@ FROM alpine:3.12
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUA_VERSION=5.4.0
+ENV LUA_VERSION=5.4.1
 
 RUN set -ex \
     \
