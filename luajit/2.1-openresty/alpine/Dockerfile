@@ -2,7 +2,7 @@ FROM alpine:3.12
 
 MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
 
-ENV LUAJIT_VERSION=2.1-20201027
+ENV LUAJIT_VERSION=2.1-20201229
 
 RUN set -ex \
     \
