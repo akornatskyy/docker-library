@@ -1,11 +1,12 @@
 FROM alpine:3.8
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
 ENV LUAJIT_VERSION=2.1.0-beta3
 
 RUN set -ex \
     \
+    && apk -U upgrade \
     && apk add --no-cache \
         libgcc \
     \
@@ -25,7 +26,7 @@ RUN set -ex \
     && cd .. \
     && rm -rf LuaJIT-${LUAJIT_VERSION} \
     && cd /usr/local/bin \
-    && ln -sf luajit-${LUAJIT_VERSION} lua \
+    && ln -sf luajit-${LUAJIT_VERSION}* lua \
     && cd /usr/local/lib \
     && find libluajit*.so | xargs -I {} ln -sf {} {}.2 \
     \

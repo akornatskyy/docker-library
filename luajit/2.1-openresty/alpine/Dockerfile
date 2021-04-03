@@ -1,11 +1,12 @@
 FROM alpine:3.13
 
-MAINTAINER Andriy Kornatskyy <andriy.kornatskyy@live.com>
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
 ENV LUAJIT_VERSION=2.1-20201229
 
 RUN set -ex \
     \
+    && apk -U upgrade \
     && apk add --no-cache \
         libgcc \
     \

@@ -6,6 +6,7 @@ ENV LUA_VERSION=5.4.3
 
 RUN set -ex \
     \
+    && apk -U upgrade \
     && apk add --no-cache --virtual .build-deps \
         ca-certificates \
         openssl \
