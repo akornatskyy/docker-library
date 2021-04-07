@@ -1,0 +1,48 @@
+@require(base_image, lua_version, download_url)
+FROM @base_image
+
+LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@@live.com>"
+
+ENV LUAJIT_VERSION=@lua_version
+
+RUN set -ex \
+    \
+    && apk -U upgrade \
+    && apk add --no-cache \
+        libgcc \
+    \
+    && apk add --no-cache --virtual .build-deps \
+        ca-certificates \
+        openssl \
+        make \
+        gcc \
+        libc-dev \
+    \
+    && wget -c @download_url \
+        -O - | tar xzf - \
+    \
+@if not 'openresty' in download_url:
+    && cd LuaJIT-${LUAJIT_VERSION} \
+@else:
+    && cd luajit2-${LUAJIT_VERSION} \
+@end
+    && make -j"$(nproc)" \
+    && make install INSTALL_INC=/usr/local/include \
+    && cd .. \
+@if not 'openresty' in download_url:
+    && rm -rf LuaJIT-${LUAJIT_VERSION} \
+@else:
+    && rm -rf luajit2-${LUAJIT_VERSION} \
+@end
+    && cd /usr/local/bin \
+@if not 'openresty' in download_url:
+    && ln -sf luajit-${LUAJIT_VERSION}* lua \
+    && cd /usr/local/lib \
+    && find libluajit*.so | xargs -I {} ln -sf {} {}.2 \
+@else:
+    && ln -sf luajit lua \
+@end
+    \
+    && apk del .build-deps
+
+CMD ["lua"]
