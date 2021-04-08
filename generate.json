@@ -73,7 +73,7 @@
     {
       "base": "luarocks/",
       "defaults": {
-        "luarocks_version": "3.5.0"
+        "luarocks_version": "3.7.0"
       },
       "variants": [
         {
