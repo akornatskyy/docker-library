@@ -4,7 +4,7 @@ set -eo pipefail
 
 cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
-for version in stable ; do
+for version in stable mainline ; do
   cd $version
   modules=( */ )
   for module in "${modules[@]%/}" ; do
@@ -15,4 +15,5 @@ for version in stable ; do
       docker run --rm ${image} nginx -v
     done
   done
+  cd ..
 done

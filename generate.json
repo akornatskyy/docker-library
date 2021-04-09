@@ -165,6 +165,46 @@
           }
         }
       ]
+    },
+    {
+      "base": "nginx/",
+      "defaults": {
+        "nginx_version": "1.19.10",
+        "nginx_lua_module_version": "0.10.13"
+      },
+      "variants": [
+        {
+          "out": "mainline/lua5.1/alpine",
+          "context": {
+            "base_image": "akorn/luarocks:lua5.1-alpine"
+          }
+        },
+        {
+          "out": "mainline/luajit2.0/alpine",
+          "context": {
+            "base_image": "akorn/luarocks:luajit2.0-alpine"
+          }
+        },
+        {
+          "out": "mainline/luajit2.1/alpine",
+          "context": {
+            "base_image": "akorn/luarocks:luajit2.1-alpine"
+          }
+        },
+        {
+          "out": "mainline/luajit2.1-edge/alpine",
+          "context": {
+            "base_image": "akorn/luarocks:luajit2.1-edge-alpine"
+          }
+        },
+        {
+          "out": "mainline/luajit2.1-openresty/alpine",
+          "context": {
+            "base_image": "akorn/luarocks:luajit2.1-openresty-alpine",
+            "nginx_lua_module_version": "0.10.15"
+          }
+        }
+      ]
     }
   ]
 }
