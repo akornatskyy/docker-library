@@ -13,21 +13,21 @@
         {
           "out": "5.2/alpine",
           "context": {
-            "base_image": "alpine:3.13",
+            "base_image": "alpine:3.14",
             "lua_version": "5.2.4"
           }
         },
         {
           "out": "5.3/alpine",
           "context": {
-            "base_image": "alpine:3.13",
+            "base_image": "alpine:3.14",
             "lua_version": "5.3.6"
           }
         },
         {
           "out": "5.4/alpine",
           "context": {
-            "base_image": "alpine:3.13",
+            "base_image": "alpine:3.14",
             "lua_version": "5.4.3"
           }
         }
