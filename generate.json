@@ -63,7 +63,7 @@
         {
           "out": "2.1-openresty/alpine",
           "context": {
-            "base_image": "alpine:3.13",
+            "base_image": "alpine:3.14",
             "lua_version": "2.1-20210510",
             "download_url": "https://github.com/openresty/luajit2/archive/v${LUAJIT_VERSION}.tar.gz"
           }
