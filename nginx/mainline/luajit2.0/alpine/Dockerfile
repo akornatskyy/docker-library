@@ -2,7 +2,7 @@ FROM akorn/luarocks:luajit2.0-alpine
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV NGINX_VERSION=1.21.0
+ENV NGINX_VERSION=1.21.1
 ENV NGINX_LUA_MODULE_VERSION=0.10.13
 
 RUN set -ex \
