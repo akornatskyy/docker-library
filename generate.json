@@ -169,7 +169,7 @@
     {
       "base": "nginx/",
       "defaults": {
-        "nginx_version": "1.21.1",
+        "nginx_version": "1.21.3",
         "nginx_lua_module_version": "0.10.13"
       },
       "variants": [
