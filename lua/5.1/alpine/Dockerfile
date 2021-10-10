@@ -13,6 +13,7 @@ RUN set -ex \
         make \
         gcc \
         libc-dev \
+        wget \
     \
     && wget -c https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
         -O - | tar -xzf - \
