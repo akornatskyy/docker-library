@@ -13,16 +13,19 @@ RUN set -ex \
         make \
         gcc \
         libc-dev \
-        wget \
     \
-    && wget -c https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
-        -O - | tar -xzf - \
+    && wget --no-check-certificate -c \
+        https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
+        -O lua.tar.gz \
+    && echo "b3882111ad02ecc6b972f8c1241647905cb2e3fc  lua.tar.gz" | \
+        sha1sum -c -s - \
+    && tar xzf lua.tar.gz \
     \
     && cd lua-${LUA_VERSION} \
     && make -j"$(nproc)" posix \
     && make install \
     && cd .. \
-    && rm -rf lua-${LUA_VERSION} \
+    && rm -rf lua.tar.gz lua-${LUA_VERSION} \
     \
     && apk del .build-deps
 
