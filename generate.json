@@ -14,7 +14,7 @@
         {
           "out": "5.2/alpine",
           "context": {
-            "base_image": "alpine:3.14",
+            "base_image": "alpine:3.15",
             "lua_version": "5.2.4",
             "checksum": "ef15259421197e3d85b7d6e4871b8c26fd82c1cf"
           }
@@ -22,7 +22,7 @@
         {
           "out": "5.3/alpine",
           "context": {
-            "base_image": "alpine:3.14",
+            "base_image": "alpine:3.15",
             "lua_version": "5.3.6",
             "checksum": "f27d20d6c81292149bc4308525a9d6733c224fa5"
           }
@@ -30,7 +30,7 @@
         {
           "out": "5.4/alpine",
           "context": {
-            "base_image": "alpine:3.14",
+            "base_image": "alpine:3.15",
             "lua_version": "5.4.3",
             "checksum": "1dda2ef23a9828492b4595c0197766de6e784bc7"
           }
@@ -67,7 +67,7 @@
         {
           "out": "2.1-openresty/alpine",
           "context": {
-            "base_image": "alpine:3.14",
+            "base_image": "alpine:3.15",
             "lua_version": "2.1-20210510",
             "download_url": "https://github.com/openresty/luajit2/archive/v${LUAJIT_VERSION}.tar.gz"
           }
