@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUAJIT_VERSION=2.1-20220111
+ENV LUAJIT_VERSION=2.1-20220310
 
 RUN set -ex \
     \
