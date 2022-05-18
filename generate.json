@@ -31,8 +31,8 @@
           "out": "5.4/alpine",
           "context": {
             "base_image": "alpine:3.15",
-            "lua_version": "5.4.3",
-            "checksum": "1dda2ef23a9828492b4595c0197766de6e784bc7"
+            "lua_version": "5.4.4",
+            "checksum": "03c27684b9d5d9783fb79a7c836ba1cdc5f309cd"
           }
         }
       ]
@@ -68,7 +68,7 @@
           "out": "2.1-openresty/alpine",
           "context": {
             "base_image": "alpine:3.15",
-            "lua_version": "2.1-20220310",
+            "lua_version": "2.1-20220411",
             "download_url": "https://github.com/openresty/luajit2/archive/v${LUAJIT_VERSION}.tar.gz"
           }
         }
@@ -77,7 +77,7 @@
     {
       "base": "luarocks/",
       "defaults": {
-        "luarocks_version": "3.8.0"
+        "luarocks_version": "3.9.0"
       },
       "variants": [
         {
