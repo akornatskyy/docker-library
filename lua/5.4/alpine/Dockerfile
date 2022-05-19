@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUA_VERSION=5.4.3
+ENV LUA_VERSION=5.4.4
 
 RUN set -ex \
     \
@@ -17,7 +17,7 @@ RUN set -ex \
     && wget --no-check-certificate -c \
         https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
         -O lua.tar.gz \
-    && echo "1dda2ef23a9828492b4595c0197766de6e784bc7  lua.tar.gz" | \
+    && echo "03c27684b9d5d9783fb79a7c836ba1cdc5f309cd  lua.tar.gz" | \
         sha1sum -c -s - \
     && tar xzf lua.tar.gz \
     \
