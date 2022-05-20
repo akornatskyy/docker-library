@@ -9,7 +9,7 @@ RUN set -ex \
     && apk add --no-cache \
         ca-certificates \
         openssl \
-        curl \
+        wget \
     \
     && apk add --no-cache --virtual .build-deps \
         make \
