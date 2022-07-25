@@ -7,12 +7,17 @@ ENV LUA_VERSION=5.1.5
 RUN set -ex \
     \
     && apk -U upgrade \
+    && apk add --no-cache \
+        readline \
+    \
     && apk add --no-cache --virtual .build-deps \
         ca-certificates \
         openssl \
         make \
         gcc \
         libc-dev \
+        readline-dev \
+        ncurses-dev \
     \
     && wget --no-check-certificate -c \
         https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
@@ -22,7 +27,7 @@ RUN set -ex \
     && tar xzf lua.tar.gz \
     \
     && cd lua-${LUA_VERSION} \
-    && make -j"$(nproc)" posix \
+    && make -j"$(nproc)" linux \
     && make install \
     && cd .. \
     && rm -rf lua.tar.gz lua-${LUA_VERSION} \
