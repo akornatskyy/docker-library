@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 set -eo pipefail
 
 
-cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
-versions=( */ )
-for version in "${versions[@]%/}" ; do
+cd "$(dirname "$(readlink -f "$0")")"
+versions=$(ls -d */ | tr -d \/)
+for version in ${versions} ; do
   for os in alpine ; do
     image=akorn/luarocks:${version}-${os}
     echo building $image ...

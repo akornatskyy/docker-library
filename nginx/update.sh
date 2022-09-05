@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 set -eo pipefail
 
 
-cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
-
-for version in stable mainline ; do
+cd "$(dirname "$(readlink -f "$0")")"
+versions=$(ls -d */ | tr -d \/)
+for version in ${versions} ; do
   cd $version
-  modules=( */ )
-  for module in "${modules[@]%/}" ; do
+  modules=$(ls -d */ | tr -d \/)
+  for module in ${modules} ; do
     for os in alpine ; do
       image=akorn/nginx:${version}-${module}-${os}
       echo building $image ...
