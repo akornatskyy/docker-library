@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eo pipefail
+set -e
 
 
 cd "$(dirname "$(readlink -f "$0")")"

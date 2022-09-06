@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eo pipefail
+set -e
 
 
 for c in lua luajit luarocks nginx; do
