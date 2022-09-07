@@ -11,7 +11,18 @@ for version in ${versions} ; do
     for os in alpine ; do
       image=akorn/nginx:${version}-${module}-${os}
       echo building $image ...
-      docker build -q -t ${image} ${module}/${os}
+
+      platform=linux/amd64
+      case "$module" in
+        'luajit2.0') ;;
+        *) platform=${platform},linux/arm64 ;;
+      esac
+
+      docker buildx build -q \
+        --tag ${image} \
+        --platform ${platform} \
+        --push \
+        ${module}/${os}
       docker run --rm ${image} nginx -v
     done
   done

@@ -8,7 +8,18 @@ for version in ${versions} ; do
   for os in alpine ; do
     image=akorn/luarocks:${version}-${os}
     echo building $image ...
-    docker build -q -t ${image} ${version}/${os}
+
+    platform=linux/amd64
+    case "$version" in
+      'luajit2.0') ;;
+      *) platform=${platform},linux/arm64 ;;
+    esac
+
+    docker buildx build -q \
+      --tag ${image} \
+      --platform ${platform} \
+      --push \
+      ${version}/${os}
     docker run --rm ${image} lua -v
   done
 done
