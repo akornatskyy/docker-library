@@ -13,10 +13,6 @@ for version in ${versions} ; do
       echo building $image ...
 
       platform=linux/amd64
-      case "$module" in
-        'luajit2.0') ;;
-        *) platform=${platform},linux/arm64 ;;
-      esac
 
       docker buildx build -q \
         --tag ${image} \
