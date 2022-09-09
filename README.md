@@ -1,10 +1,11 @@
 # Docker Library
 
-[![Build Status](https://travis-ci.org/akornatskyy/docker-library.svg?branch=master)](https://travis-ci.org/akornatskyy/docker-library)
+[![images](https://github.com/akornatskyy/docker-library/actions/workflows/images.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/images.yml)
 
 ## Images
 
-These images are based on the [Alpine Linux](https://alpinelinux.org/).
+These images are based on the [Alpine Linux](https://alpinelinux.org/) and
+built for `linux/amd64` and `linux/arm64` (except luajit 2.0 and nginx).
 
 - [lua](https://hub.docker.com/r/akorn/lua/) 5.1, 5.2, 5.3, 5.4
 - [luajit](https://hub.docker.com/r/akorn/luajit/) 2.0, 2.1, 2.1-edge, 2.1-openresty
@@ -15,13 +16,6 @@ These images are based on the [Alpine Linux](https://alpinelinux.org/).
 
 ```sh
 docker run -it --rm akorn/lua:5.1-alpine
-```
-
-## Setup
-
-```sh
-docker images --format "{{.Repository}}:{{.Tag}}" | awk '/akorn/ && !/none/' \
-     | tac | xargs -I {} docker push {}
 ```
 
 ## Links
