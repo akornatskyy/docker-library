@@ -18,6 +18,8 @@ built for `linux/amd64` and `linux/arm64` (except luajit 2.0 and nginx).
 docker run -it --rm akorn/lua:5.1-alpine
 ```
 
+The LuaRocks images can be used as build containers, see [this example](luarocks/README.md).
+
 ## Links
 
 - [Best practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) for writing Dockerfiles
