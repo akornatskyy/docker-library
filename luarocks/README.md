@@ -13,9 +13,9 @@ RUN apk add \
     make \
     openssl-dev
 
-# install application and optional modules
-RUN luarocks install copas \
- && luarocks install luasec
+# install application. LuaRocks will pull in other modules and build the binary
+# dependencies
+RUN luarocks install copas
 
 # collect cli-scripts; the ones that contain "LUAROCKS_SYSCONFDIR" are Lua ones
 RUN mkdir /luarocksbin \
@@ -27,9 +27,6 @@ RUN mkdir /luarocksbin \
 
 
 FROM akorn/lua:5.1-alpine
-RUN apk add --no-cache \
-    ca-certificates \
-    openssl
 
 # copy artifacts (luarocks tree and cli-scripts) over
 COPY --from=build /luarocksbin/* /usr/local/bin/
