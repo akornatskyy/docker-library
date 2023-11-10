@@ -1,4 +1,4 @@
-name: images
+name: lua
 
 on:
   schedule:
@@ -6,6 +6,12 @@ on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/lua.yml
+      - lua/*
+      - luajit/*
+      - luarocks/*
+      - nginx/*
 
 jobs:
   build:
