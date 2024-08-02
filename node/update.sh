@@ -3,7 +3,7 @@ set -e
 
 
 cd "$(dirname "$(readlink -f "$0")")"
-for major in 20 21 22 ; do
+for major in 20 22 ; do
   version=$(docker run --rm node:${major}-bookworm-slim --version)
   version=$(echo ${version} | cut -c2-)
   minor=$(echo ${version} | cut -d. -f2)
