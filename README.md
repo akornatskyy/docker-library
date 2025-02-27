@@ -20,13 +20,18 @@
 
 ## Examples
 
+### Basic Lua example
+
 ```sh
 docker run -it --rm akorn/lua:5.1-alpine
 ```
 
-The LuaRocks images can be used as build containers, see [this example](luarocks/README.md).
+### Luarocks examples
 
-The node image is configured to run script directly (the entrypoint is set to
+The LuaRocks images can be used as build containers, see [this example](luarocks/README.md#example-build-container). Or to create a private LuaRocks server, see [this example](luarocks/README.md#example-luarocks-server).
+
+### Node examples
+The node image is configured to run scripts directly (the entrypoint is set to
 *node*).
 
 ```sh
