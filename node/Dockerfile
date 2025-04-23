@@ -1,6 +1,6 @@
-ARG NODE_VERSION
+ARG NODE_VERSION=22
 
-FROM node:${NODE_VERSION}-bookworm-slim as b
+FROM node:${NODE_VERSION}-slim AS b
 
 RUN set -ex \
     \
