@@ -27,8 +27,12 @@ RUN set -ex \
 
 FROM gcr.io/distroless/base-debian12
 
-ARG NODE_VERSION
-LABEL nodejs/version=${NODE_VERSION}
+ARG NODE_VERSION BUILD_DATE
+
+LABEL org.opencontainers.image.created=${BUILD_DATE} \
+      org.opencontainers.image.source="https://github.com/akornatskyy/docker-library" \
+      org.opencontainers.image.title="node" \
+      org.opencontainers.image.version=${NODE_VERSION}
 
 COPY --from=b /opt/rootfs /
 
