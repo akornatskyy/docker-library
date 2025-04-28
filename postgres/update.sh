@@ -73,12 +73,12 @@ build_arch_image() {
 
   for i in {1..10}; do
     if docker exec -u postgres pg pg_isready; then
-      break
+      if docker exec -u postgres pg pg_ctl -W stop; then
+        break
+      fi
     fi
     sleep 2
   done
-
-  docker exec -u postgres pg pg_ctl -W stop
 }
 
 push_to_local_registry() {
