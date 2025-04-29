@@ -71,7 +71,7 @@ build_arch_image() {
     --env POSTGRES_HOST_AUTH_METHOD=trust \
     localhost:5000/postgres:${major}-slim-${arch}
 
-  for i in {1..10}; do
+  for i in $(seq 1 10); do
     if docker exec -u postgres pg pg_isready; then
       if docker exec -u postgres pg pg_ctl -W stop; then
         break
