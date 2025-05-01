@@ -29,7 +29,9 @@ FROM gcr.io/distroless/base-debian12
 
 ARG NODE_VERSION BUILD_DATE
 
-LABEL org.opencontainers.image.created=${BUILD_DATE} \
+LABEL org.nodejs.created=${BUILD_DATE} \
+      org.nodejs.version=${NODE_VERSION} \
+      org.opencontainers.image.created=${BUILD_DATE} \
       org.opencontainers.image.source="https://github.com/akornatskyy/docker-library" \
       org.opencontainers.image.title="node" \
       org.opencontainers.image.version=${NODE_VERSION}
