@@ -18,6 +18,12 @@
 
 - [node](https://nodejs.org/) lts, current
 
+[Debian 12 (bookworm)](https://www.debian.org/) /
+[mintoolkit](https://github.com/mintoolkit/mint)
+`linux/amd64` and `linux/arm64`:
+
+- [postgres](https://www.postgresql.org/) 17
+
 ## Examples
 
 ### Basic Lua example
@@ -31,6 +37,7 @@ docker run -it --rm akorn/lua:5.1-alpine
 The LuaRocks images can be used as build containers, see [this example](luarocks/README.md#example-build-container). Or to create a private LuaRocks server, see [this example](luarocks/README.md#example-luarocks-server).
 
 ### Node examples
+
 The node image is configured to run scripts directly (the entrypoint is set to
 *node*).
 
@@ -40,6 +47,19 @@ docker run -it --rm akorn/node:21 --version
 docker run -it --rm -u nobody akorn/node index.js
 
 docker run -it --rm akorn/node --enable-source-maps index.js
+```
+
+### Postgres examples
+
+```sh
+docker run -it --rm -p 127.0.0.1:5432:5432 \
+  --env POSTGRES_HOST_AUTH_METHOD=trust akorn/postgres:17-scratch
+```
+
+## Installing emulators
+
+```sh
+docker run --privileged --rm tonistiigi/binfmt --install arm64
 ```
 
 ## Links
