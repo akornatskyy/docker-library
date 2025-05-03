@@ -1,6 +1,6 @@
 # Docker Library
 
-[![lua](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml) [![node](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml)
+[![lua](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml) [![node](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml) [![postgres](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml)
 
 ## Images
 
