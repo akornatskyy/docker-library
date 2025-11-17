@@ -11,7 +11,6 @@ on:
       - lua/*
       - luajit/*
       - luarocks/*
-      - nginx/*
 
 jobs:
   build:
@@ -28,4 +27,8 @@ jobs:
         with:
           username: akorn
           password: ${{ secrets.docker_password }}
-      - run: sh ./update.sh
+      - run: |
+          sh ./lua/update.sh
+          sh ./luajit/update.sh
+          sh ./luarocks/update.sh
+          docker images
