@@ -1,6 +1,6 @@
 # Docker Library
 
-[![lua](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml) [![node](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml) [![postgres](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml)
+[![lua](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/lua.yml) [![node](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/node.yml) [![postgres](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/postgres.yml) [![h2o](https://github.com/akornatskyy/docker-library/actions/workflows/h2o.yml/badge.svg)](https://github.com/akornatskyy/docker-library/actions/workflows/h2o.yml)
 
 ## Images
 
@@ -23,6 +23,12 @@
 `linux/amd64` and `linux/arm64`:
 
 - [postgres](https://www.postgresql.org/) 17
+
+[Debian 12 (bookworm), 13 (trixie)](https://www.debian.org/) /
+[distroless](https://github.com/GoogleContainerTools/distroless)
+`linux/amd64` and `linux/arm64`:
+
+- [h2o](https://github.com/h2o/h2o) master
 
 ## Examples
 
