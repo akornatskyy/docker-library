@@ -1,6 +1,8 @@
-ARG NODE_VERSION=22
+ARG DEBIAN_CODENAME=trixie
+ARG DEBIAN_VERSION=13
+ARG NODE_VERSION=24
 
-FROM node:${NODE_VERSION}-slim AS b
+FROM node:${NODE_VERSION}-${DEBIAN_CODENAME}-slim AS b
 
 RUN set -ex \
     \
@@ -19,13 +21,17 @@ RUN set -ex \
        amd64) ARCH='x86_64' ;; \
        arm64) ARCH='aarch64' ;; \
     esac \
-    && mkdir -p lib/${ARCH}-linux-gnu usr/local/bin \
+    && mkdir -p usr/lib/${ARCH}-linux-gnu usr/local/bin \
     \
     && cp -a /usr/local/bin/node usr/local/bin \
-    && cp -a /lib/${ARCH}-linux-gnu/libstdc++.so* lib/${ARCH}-linux-gnu \
-    && cp -a /lib/${ARCH}-linux-gnu/libgcc_s.so* lib/${ARCH}-linux-gnu
+    && if [ $(echo "${NODE_VERSION}" | cut -d. -f1) -ge 25 ]; then \
+      cp -a /usr/lib/${ARCH}-linux-gnu/libatomic.so* \
+        usr/lib/${ARCH}-linux-gnu ; \
+    fi \
+    && cp -a /usr/lib/${ARCH}-linux-gnu/libstdc++.so* \
+      /usr/lib/${ARCH}-linux-gnu/libgcc_s.so* usr/lib/${ARCH}-linux-gnu
 
-FROM gcr.io/distroless/base-debian12
+FROM gcr.io/distroless/base-debian${DEBIAN_VERSION}
 
 ARG NODE_VERSION BUILD_DATE
 
