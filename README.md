@@ -12,7 +12,7 @@
 - [luarocks](https://hub.docker.com/r/akorn/luarocks/) lua*, luajit*
 - [nginx](https://hub.docker.com/r/akorn/nginx/) stable-lua*, stable-luajit*, mainline-lua*, mainline-luajit*
 
-[Debian 12 (bookworm)](https://www.debian.org/) /
+[Debian 12 (bookworm), 13 (trixie)](https://www.debian.org/) /
 [distroless](https://github.com/GoogleContainerTools/distroless)
 `linux/amd64` and `linux/arm64`:
 
@@ -22,7 +22,7 @@
 [mintoolkit](https://github.com/mintoolkit/mint)
 `linux/amd64` and `linux/arm64`:
 
-- [postgres](https://www.postgresql.org/) 17
+- [postgres](https://www.postgresql.org/) 17, 18
 
 [Debian 12 (bookworm), 13 (trixie)](https://www.debian.org/) /
 [distroless](https://github.com/GoogleContainerTools/distroless)

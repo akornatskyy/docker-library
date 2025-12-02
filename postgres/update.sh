@@ -5,17 +5,10 @@ cd "$(dirname "$(readlink -f "$0")")"
 
 # image=localhost:5000/akorn/postgres
 image=akorn/postgres
-major=17
+versions="17 18"
 platforms=linux/amd64,linux/arm64
 build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-docker image inspect postgres:${major} >/dev/null 2>&1 ||
-  docker pull postgres:${major}
-
-version=$(
-  docker run --rm --entrypoint postgres \
-    postgres:${major} -V | cut -d' ' -f3
-)
 
 prepare() {
   docker run --privileged --rm tonistiigi/binfmt --install arm64
@@ -49,6 +42,7 @@ EOF
 
 build_arch_image() {
   platform=${1}
+  major=${2}
   arch=$(echo ${platform} | cut -d'/' -f2)
 
   docker pull --platform ${platform} postgres:${major}
@@ -84,12 +78,17 @@ build_arch_image() {
 push_to_local_registry() {
   docker ps -a --filter "name=registry" | grep registry &&
     docker start registry ||
-    docker run --name registry --rm -p 5000:5000 -d registry:2
+    docker run --name registry --rm -p 5000:5000 -d registry:3
 
   docker push -a localhost:5000/postgres
 }
 
 build_multiarch_image() {
+  major=${1}
+  version=$(
+    docker run --rm --entrypoint postgres \
+      postgres:${major} -V | cut -d' ' -f3
+  )
   docker buildx build \
     -t ${image}:${major}-scratch \
     -t ${image}:${version}-scratch \
@@ -124,11 +123,19 @@ main() {
   # prepare
   for platform in $(echo "${platforms}" | tr ',' ' '); do
     build_mint ${platform}
-    build_arch_image ${platform}
+
+    for major in ${versions} ; do
+      docker image inspect postgres:${major} >/dev/null 2>&1 ||
+        docker pull postgres:${major}
+
+      build_arch_image ${platform} ${major}
+    done
   done
 
   push_to_local_registry
-  build_multiarch_image
+  for major in ${versions} ; do
+    build_multiarch_image ${major}
+  done
   # cleanup
 }
 
