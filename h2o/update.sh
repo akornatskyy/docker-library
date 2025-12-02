@@ -25,6 +25,6 @@ for debian_version in 12 13 ; do
     --push \
     .
 
-  docker run --rm ${image} h2o --version
+  docker run --rm ${image} --version
 
 done
