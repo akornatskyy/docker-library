@@ -21,8 +21,8 @@ build_mint() {
 FROM debian AS b
 RUN set -ex \
     \
-    && apt-get -yqq update \
-    && apt-get -yqq install wget \
+    && apt-get -yq update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -yq install wget \
     \
     && ARCH=\$(dpkg --print-architecture) \
     && case "\${ARCH}" in \
@@ -75,11 +75,13 @@ build_arch_image() {
   done
 }
 
-push_to_local_registry() {
+start_local_registry() {
   docker ps -a --filter "name=registry" | grep registry &&
     docker start registry ||
     docker run --name registry --rm -p 5000:5000 -d registry:3
+}
 
+push_to_local_registry() {
   docker push -a localhost:5000/postgres
 }
 
@@ -121,6 +123,7 @@ cleanup() {
 
 main() {
   # prepare
+  start_local_registry
   for platform in $(echo "${platforms}" | tr ',' ' '); do
     build_mint ${platform}
 
