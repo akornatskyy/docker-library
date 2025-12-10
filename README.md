@@ -18,7 +18,7 @@
 
 - [node](https://nodejs.org/) lts, current
 
-[Debian 12 (bookworm)](https://www.debian.org/) /
+[Debian](https://www.debian.org/) /
 [mintoolkit](https://github.com/mintoolkit/mint)
 `linux/amd64` and `linux/arm64`:
 
@@ -66,6 +66,12 @@ docker run -it --rm -p 127.0.0.1:5432:5432 \
 
 ```sh
 docker run --privileged --rm tonistiigi/binfmt --install arm64
+```
+
+## Scan a container image
+
+```sh
+trivy image --ignore-unfixed akorn/node:25
 ```
 
 ## Links
