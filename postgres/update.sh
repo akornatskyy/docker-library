@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+export MSYS_NO_PATHCONV=1
+
 cd "$(dirname "$(readlink -f "$0")")"
 
 # image=localhost:5000/akorn/postgres
@@ -30,7 +32,7 @@ RUN set -ex \
       arm64) f=dist_linux_arm64.tar.gz ;; \
     esac \
     && wget -qO mint.tar.gz \
-      https://github.com/mintoolkit/mint/releases/download/1.41.7/\${f} \
+      https://github.com/mintoolkit/mint/releases/download/1.41.8/\${f} \
     \
     && mkdir mint \
     && tar xf mint.tar.gz --strip-components=1 -C mint
@@ -47,7 +49,7 @@ build_arch_image() {
 
   docker pull --platform ${platform} postgres:${major}
   docker run --rm \
-    -v //var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     --platform ${platform} \
     mint build \
     --target postgres:${major} \
@@ -55,10 +57,18 @@ build_arch_image() {
     --show-clogs=true \
     --env POSTGRES_HOST_AUTH_METHOD=trust \
     --http-probe=false \
-    --include-path=//usr/bin/chown \
-    --include-path=//usr/share/zoneinfo \
-    --exclude-pattern=//var/lib/postgresql/data/** \
-    --exec="sleep 5; i=1; while [ \$i -le 10 ]; do gosu postgres pgbench -i -s 10 postgres && break || sleep 5; i=\$((i+1)); done; gosu postgres pg_isready"
+    --include-path=/usr/bin/chown \
+    --include-path=/usr/share/zoneinfo \
+    --exec='set -ex
+    sleep 5
+    i=1
+    while [ $i -le 10 ]; do
+      gosu postgres pgbench -i -s 10 postgres && break || sleep 5
+      i=$((i+1))
+    done
+    gosu postgres pg_isready
+    gosu postgres pg_ctl -w stop
+    rm -rf $PGDATA/*'
 
   docker run --name pg --rm -d \
     --platform ${platform} \
