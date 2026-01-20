@@ -1,5 +1,6 @@
 import json
 import os.path
+
 from wheezy.template.engine import Engine
 from wheezy.template.ext.core import CoreExtension
 from wheezy.template.loader import FileLoader
@@ -17,6 +18,8 @@ for t in config["targets"]:
     for variant in t["variants"]:
         context = dict(defaults, **variant["context"])
         content = template.render(context)
-        out = os.path.join(t["base"], variant["out"], "Dockerfile")
+        out_dir = os.path.join(t["base"], variant["out"])
+        os.makedirs(out_dir, exist_ok=True)
+        out = os.path.join(out_dir, "Dockerfile")
         with open(out, "w", newline="\r\n") as f:
             f.write(content)
