@@ -7,7 +7,7 @@
 [Alpine Linux](https://alpinelinux.org/) `linux/amd64` and `linux/arm64`
 (except luajit 2.0 and nginx):
 
-- [lua](https://hub.docker.com/r/akorn/lua/) 5.1, 5.2, 5.3, 5.4
+- [lua](https://hub.docker.com/r/akorn/lua/) 5.1, 5.2, 5.3, 5.4, 5.5
 - [luajit](https://hub.docker.com/r/akorn/luajit/) 2.0, 2.1, 2.1-edge, 2.1-openresty
 - [luarocks](https://hub.docker.com/r/akorn/luarocks/) lua*, luajit*
 - [nginx](https://hub.docker.com/r/akorn/nginx/) stable-lua*, stable-luajit*, mainline-lua*, mainline-luajit*
@@ -16,6 +16,7 @@
 [distroless](https://github.com/GoogleContainerTools/distroless)
 `linux/amd64` and `linux/arm64`:
 
+- [h2o](https://github.com/h2o/h2o) master
 - [node](https://nodejs.org/) lts, current
 
 [Debian](https://www.debian.org/) /
@@ -23,12 +24,6 @@
 `linux/amd64` and `linux/arm64`:
 
 - [postgres](https://www.postgresql.org/) 17, 18
-
-[Debian 12 (bookworm), 13 (trixie)](https://www.debian.org/) /
-[distroless](https://github.com/GoogleContainerTools/distroless)
-`linux/amd64` and `linux/arm64`:
-
-- [h2o](https://github.com/h2o/h2o) master
 
 ## Examples
 

@@ -33,6 +33,13 @@
             "lua_version": "5.4.8",
             "checksum": "ced7c0ec99ad9d984ad3e7af5fcd2deef2b33f9f"
           }
+        },
+        {
+          "out": "5.5/alpine",
+          "context": {
+            "lua_version": "5.5.0",
+            "checksum": "71c930fa188fd244f353f227175c6f5ee5b52f6a"
+          }
         }
       ]
     },
@@ -98,6 +105,12 @@
           "out": "lua5.4/alpine",
           "context": {
             "base_image": "akorn/lua:5.4-alpine"
+          }
+        },
+        {
+          "out": "lua5.5/alpine",
+          "context": {
+            "base_image": "akorn/lua:5.5-alpine"
           }
         },
         {
