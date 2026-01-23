@@ -80,7 +80,7 @@
     {
       "base": "luarocks/",
       "defaults": {
-        "luarocks_version": "3.12.2"
+        "luarocks_version": "3.13.0"
       },
       "variants": [
         {
