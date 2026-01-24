@@ -8,9 +8,9 @@ on:
       - master
     paths:
       - .github/workflows/lua.yml
-      - lua/*
-      - luajit/*
-      - luarocks/*
+      - lua/**
+      - luajit/**
+      - luarocks/**
 
 jobs:
   build:
