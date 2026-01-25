@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 export MSYS_NO_PATHCONV=1
 
@@ -10,7 +10,7 @@ image=akorn/postgres
 versions="17 18"
 platforms=linux/amd64,linux/arm64
 build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
+mint_version=1.41.8
 
 prepare() {
   docker run --privileged --rm tonistiigi/binfmt --install arm64
@@ -32,7 +32,7 @@ RUN set -ex \
       arm64) f=dist_linux_arm64.tar.gz ;; \
     esac \
     && wget -qO mint.tar.gz \
-      https://github.com/mintoolkit/mint/releases/download/1.41.8/\${f} \
+      https://github.com/mintoolkit/mint/releases/download/${mint_version}/\${f} \
     \
     && mkdir mint \
     && tar xf mint.tar.gz --strip-components=1 -C mint
