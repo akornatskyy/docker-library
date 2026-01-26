@@ -18,8 +18,7 @@ prepare() {
 }
 
 build_mint() {
-  platform=${1}
-  docker buildx build -t mint --platform ${platform} --load -f - . <<EOF
+  docker buildx build -t mint --load -f - . <<EOF
 FROM debian AS b
 RUN set -ex \
     \
@@ -43,14 +42,17 @@ EOF
 }
 
 build_arch_image() {
-  platform=${1}
-  major=${2}
-  arch=$(echo ${platform} | cut -d'/' -f2)
+  major=${1}
+  arch=$(echo ${DOCKER_DEFAULT_PLATFORM} | cut -d'/' -f2)
 
-  docker pull --platform ${platform} postgres:${major}
+  docker rmi postgres:${major} || true
+  docker pull postgres:${major}
+  docker ps -a
+  docker images
+  docker inspect postgres:${major}
+
   docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    --platform ${platform} \
     mint build \
     --target postgres:${major} \
     --tag localhost:5000/postgres:${major}-slim-${arch} \
@@ -71,7 +73,6 @@ build_arch_image() {
     rm -rf $PGDATA/*'
 
   docker run --name pg --rm -d \
-    --platform ${platform} \
     --env POSTGRES_HOST_AUTH_METHOD=trust \
     localhost:5000/postgres:${major}-slim-${arch}
 
@@ -135,13 +136,11 @@ main() {
   # prepare
   start_local_registry
   for platform in $(echo "${platforms}" | tr ',' ' '); do
-    build_mint ${platform}
+    export DOCKER_DEFAULT_PLATFORM=${platform}
+    build_mint
 
     for major in ${versions} ; do
-      docker image inspect postgres:${major} >/dev/null 2>&1 ||
-        docker pull postgres:${major}
-
-      build_arch_image ${platform} ${major}
+      build_arch_image ${major}
     done
   done
 
