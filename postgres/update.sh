@@ -13,8 +13,8 @@ build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 mint_version=1.41.8
 
 prepare() {
+  docker buildx create --use --name b --driver-opt network=host
   docker run --privileged --rm tonistiigi/binfmt --install arm64
-  # docker buildx create --use --name b --driver-opt network=host
 }
 
 build_mint() {
@@ -45,12 +45,7 @@ build_arch_image() {
   major=${1}
   arch=$(echo ${DOCKER_DEFAULT_PLATFORM} | cut -d'/' -f2)
 
-  docker rmi postgres:${major} || true
   docker pull postgres:${major}
-  docker ps -a
-  docker images
-  docker inspect postgres:${major}
-
   docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     mint build \
@@ -128,8 +123,9 @@ EOF
 }
 
 cleanup() {
-  docker stop registry
-  docker image prune -af
+  docker rm -f $(docker ps -aq) \
+    && docker volume rm -f $(docker volume ls -q) \
+    && docker system prune -af
 }
 
 main() {
@@ -144,6 +140,7 @@ main() {
     done
   done
 
+  unset DOCKER_DEFAULT_PLATFORM
   push_to_local_registry
   for major in ${versions} ; do
     build_multiarch_image ${major}
