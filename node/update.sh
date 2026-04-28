@@ -10,7 +10,7 @@ for os in bookworm,12 trixie,13 ; do
   debian_codename=${os%%,*}
   debian_version=${os##*,}
 
-  for major in 22 24 25 ; do
+  for major in 22 24 25 26 ; do
     version=$(docker run --rm node:${major}-${debian_codename}-slim --version)
     version=$(echo ${version} | cut -c2-)
     minor=$(echo ${version} | cut -d. -f2)
