@@ -20,7 +20,7 @@ jobs:
             sudo tee /etc/docker/daemon.json
           sudo systemctl start docker
           docker info | grep Storage
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: docker/setup-qemu-action@v4
       - uses: docker/setup-buildx-action@v4
         with:
