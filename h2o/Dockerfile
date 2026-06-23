@@ -59,7 +59,9 @@ RUN set -ex \
       usr/local/share/h2o/ca-bundle.crt \
     && cp -a /src/build/h2o usr/local/bin \
     && cp -a /usr/lib/${ARCH}-linux-gnu/libz.so* \
-      /usr/lib/${ARCH}-linux-gnu/libcap.so* usr/lib/${ARCH}-linux-gnu
+      /usr/lib/${ARCH}-linux-gnu/libcap.so* \
+      /usr/lib/${ARCH}-linux-gnu/libbrotli*.so* \
+      usr/lib/${ARCH}-linux-gnu
 
 
 FROM gcr.io/distroless/base-debian${DEBIAN_VERSION}
