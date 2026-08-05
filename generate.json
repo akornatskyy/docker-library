@@ -120,12 +120,6 @@
           }
         },
         {
-          "out": "luajit2.1-edge/alpine",
-          "context": {
-            "base_image": "akorn/luajit:2.1-edge-alpine"
-          }
-        },
-        {
           "out": "luajit2.1-openresty/alpine",
           "context": {
             "base_image": "akorn/luajit:2.1-openresty-alpine"
