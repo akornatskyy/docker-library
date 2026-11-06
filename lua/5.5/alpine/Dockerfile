@@ -1,8 +1,8 @@
-FROM alpine:3.22
+FROM alpine:3.24
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
-ENV LUA_VERSION=5.5.0
+ENV LUA_VERSION=5.5.1
 
 RUN set -ex \
     \
@@ -19,10 +19,9 @@ RUN set -ex \
         readline-dev \
         ncurses-dev \
     \
-    && wget --no-check-certificate -c \
-        https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
+    && wget -c https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
         -O lua.tar.gz \
-    && echo "71c930fa188fd244f353f227175c6f5ee5b52f6a  lua.tar.gz" | \
+    && echo "b32be1c883e1c1964a0d2cafb22806589ceb716f  lua.tar.gz" | \
         sha1sum -c -s - \
     && tar xzf lua.tar.gz \
     \

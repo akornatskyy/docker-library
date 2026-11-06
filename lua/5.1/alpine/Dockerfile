@@ -1,4 +1,4 @@
-FROM alpine:3.22
+FROM alpine:3.24
 
 LABEL maintainer="Andriy Kornatskyy <andriy.kornatskyy@live.com>"
 
@@ -19,8 +19,7 @@ RUN set -ex \
         readline-dev \
         ncurses-dev \
     \
-    && wget --no-check-certificate -c \
-        https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
+    && wget -c https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
         -O lua.tar.gz \
     && echo "b3882111ad02ecc6b972f8c1241647905cb2e3fc  lua.tar.gz" | \
         sha1sum -c -s - \

@@ -20,8 +20,7 @@ RUN set -ex \
         readline-dev \
         ncurses-dev \
     \
-    && wget --no-check-certificate -c \
-        https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
+    && wget -c https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz \
         -O lua.tar.gz \
     && echo "@checksum  lua.tar.gz" | \
         sha1sum -c -s - \

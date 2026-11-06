@@ -3,7 +3,7 @@
     {
       "base": "lua/",
       "defaults": {
-        "base_image": "alpine:3.22"
+        "base_image": "alpine:3.24"
       },
       "variants": [
         {
@@ -30,15 +30,15 @@
         {
           "out": "5.4/alpine",
           "context": {
-            "lua_version": "5.4.8",
-            "checksum": "ced7c0ec99ad9d984ad3e7af5fcd2deef2b33f9f"
+            "lua_version": "5.4.9",
+            "checksum": "7d1859d593e48b9f19fe72079e3d61c0fcef18f3"
           }
         },
         {
           "out": "5.5/alpine",
           "context": {
-            "lua_version": "5.5.0",
-            "checksum": "71c930fa188fd244f353f227175c6f5ee5b52f6a"
+            "lua_version": "5.5.1",
+            "checksum": "b32be1c883e1c1964a0d2cafb22806589ceb716f"
           }
         }
       ]
@@ -46,7 +46,7 @@
     {
       "base": "luajit/",
       "defaults": {
-        "base_image": "alpine:3.22",
+        "base_image": "alpine:3.24",
         "download_url": "https://github.com/LuaJIT/LuaJIT/archive/v${LUAJIT_VERSION}.tar.gz"
       },
       "variants": [
